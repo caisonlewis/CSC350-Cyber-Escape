@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Game</title>
+    <link rel="stylesheet" href="../assets/main_screen.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Cyber Security Game!</h1>
+        <h2 id="wow"></h2>
+        <!--All this is to display a message containing data from a class in another file.-->
+        <div class="buttons">
+            <a href="../html/SignUp.html" class="button">Signed Up</a>
+            <a href="../html/daily_challenge.html" class="button">Daily Challenge</a>
+            <a href="../html/FAQ1.html" class="button">FAQ</a>
+            <a href="../html/leaderboard.html" class="button second-column">Leaderboard</a>
+            <a href="../html/campaigh_basic_new.html" class="button second-column">Campaign</a>
+            <a href="../html/about.html" class="button second-column">About</a>
+        </div>
+        <script type="module">
+            import faq from './js/classes.js'
+            var user_1 = new faq("shaneme99@gmail.com", "Shaneme99");
+            document.getElementById("wow").innerHTML =
+                "This user is called " + user_1.question;
+        </script>
+    </div>
+</body>
+</html>

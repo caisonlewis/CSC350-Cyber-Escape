@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('settings1.jpeg'); /* Set background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}

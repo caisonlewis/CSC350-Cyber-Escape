@@ -1,0 +1,43 @@
+<script setup>
+  // Import the ref function from Vue
+  import { ref } from 'vue';
+
+  // Define reactive variables to store question text and type
+  const questionText = ref('');
+  const questionType = ref('');
+  const questionChoice = ref(''); // Declare questionChoice
+  const questionError = ref('');  // Declare questionError
+
+  // Define the fetchQuestion function to fetch data from the server
+  async function fetchQuestion() {
+    try {
+      // Fetch question data from the server
+      const response = await fetch('http://localhost:3000/user/gamequestions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ questionID: '1' }) 
+      });
+
+      // Check if the response is OK
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Parse the JSON response
+      const data = await response.json();
+
+      // Update reactive variables with the fetched data
+      questionText.value = data.questionText;
+      questionType.value = data.questionType;
+      questionChoice.value = data.questionChoice;
+      questionError.value = data.questionError;
+
+    } catch (error) {
+      console.error('Error:', error);
+      // Display error message in UI or log it to console
+      questionError.value = 'An error occurred while fetching the question. Please try again.';
+    }
+  }
+</script>

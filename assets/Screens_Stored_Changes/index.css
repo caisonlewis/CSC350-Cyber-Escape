@@ -1,0 +1,45 @@
+/* styles.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('settings.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+.overlay {
+  padding: 20px;
+  border-radius: 10px;
+  margin: 50px auto; /* Center the container */
+  max-width: 600px; /* Limit the container width */
+  background-color: transparent; /* Remove the white background */
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+h1 {
+  text-align: center;
+}
+.button-group {
+  display: flex;
+  flex-direction: column; /* Arrange buttons vertically */
+  gap: 10px; /* Spacing between buttons */
+  width: 100%;
+}
+.button {
+  padding: 20px 40px; /* Increased padding */
+  font-size: 20px; /* Increased font size */
+  border: none;
+  border-radius: 10px; /* Increased border radius */
+  background-color: #4CAF50; /* Green background color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center; /* Center text horizontally */
+  text-decoration: none; /* Remove underline from links */
+}
+.button:hover {
+  background-color: #45a049;
+}

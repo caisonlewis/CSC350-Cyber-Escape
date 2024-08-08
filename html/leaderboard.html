@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Escape Leaderboard</title>
+    <link rel="stylesheet" href="../assets/leaderboard.css"> <!-- Link the CSS file -->
+
+    <style>
+        /* Style for the "Go to Homepage" button */
+        .homepage-button {
+            position: absolute;
+            top: 20px; 
+            right: 20px; 
+            padding: 15px 25px;
+            font-size: 18px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px;
+            cursor: pointer; 
+        }
+
+        /* Style for the table */
+        table {
+            margin-top: 60px; /* Add margin at the top to make space for the button */
+        }
+    </style>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Total Points</th>
+        </tr>
+        <!-- Leaderboard rows will be dynamically populated here -->
+    </table>
+
+    <!-- Button to return to homepage -->
+    <button class="homepage-button" onclick="returnToHomepage()">Go to Homepage</button>
+
+    <script>
+        // fetching username and associated point data from db to populate cells
+
+        fetch('http://localhost:3000/leaderboard')
+            .then(response => response.json())
+            .then(data => {
+                const table = document.querySelector('table');
+
+                data.forEach((user, index) => {
+                    const row = table.insertRow();
+
+                    const rankCell = row.insertCell(0);
+                    rankCell.textContent = index + 1;
+
+                    const usernameCell = row.insertCell(1);
+                    usernameCell.textContent = user.username;
+
+                    const pointsCell = row.insertCell(2);
+                    pointsCell.textContent = user.points;
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching leaderboard data:', error);
+            });
+
+        // Function to return to homepage
+        function returnToHomepage() {
+            window.location.href = 'http://localhost:5173/index.html';
+        }
+    </script>
+</body>
+</html>

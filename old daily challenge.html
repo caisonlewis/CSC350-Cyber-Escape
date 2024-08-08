@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Challenge</title>
+    <link rel="stylesheet" href="../assets/daily_challenge.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="content">
+            <h1>Daily Challenge</h1>
+            <p class="daily-challenge">Select the correct answer.</p>
+            
+            <!-- Display the question from the database -->
+            <p>{{ questionText }}</p>
+            
+            <!-- Display choice buttons based on the question type -->
+            <div v-if="questionType === 'trueFalse'">
+                <button @click="submitAnswer('true')">True</button>
+                <button @click="submitAnswer('false')">False</button>
+            </div>
+            <div v-else-if="questionType === 'multiple_choice'">
+                <!-- Replace 'A', 'B', 'C' with actual choices from the database -->
+                <button @click="submitAnswer('A')">A</button>
+                <button @click="submitAnswer('B')">B</button>
+                <button @click="submitAnswer('C')">C</button>
+            </div>
+            <div v-else>
+                <!-- Display a message if question type is not recognized -->
+                <p>Question type not recognized.</p>
+            </div>
+            
+            <!-- Submit button -->
+            <button @click="submitAnswer()">Submit</button>
+
+            <button @click="fetchQuestion">Load Question</button>
+            
+            <!-- Display error message if there's an error -->
+            <p v-if="error" class="error">{{ error }}</p>
+        </div>
+    </div>
+
+    <script setup>
+      // Import the ref function from Vue
+      import { ref } from 'vue';
+
+      // Define reactive variables to store question text and type
+      const questionText = ref('');
+      const questionType = ref('');
+      const questionChoice = ref(''); // Declare questionChoice
+      const questionError = ref('');  // Declare questionError
+
+      // Define the fetchQuestion function to fetch data from the server
+      async function fetchQuestion() {
+        try {
+          // Fetch question data from the server
+          const response = await fetch('http://localhost:3000/user/gamequestions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ questionID: '1' }) 
+          });
+
+          // Check if the response is OK
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+
+          // Parse the JSON response
+          const data = await response.json();
+
+          // Update reactive variables with the fetched data
+          questionText.value = data.questionText;
+          questionType.value = data.questionType;
+          questionChoice.value = data.questionChoice;
+          questionError.value = data.questionError;
+
+        } catch (error) {
+          console.error('Error:', error);
+          // Display error message in UI or log it to console
+          questionError.value = 'An error occurred while fetching the question. Please try again.';
+        }
+      }
+    </script>
+</body>
+</html>

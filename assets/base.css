@@ -1,0 +1,63 @@
+/* styles.css */
+
+body {
+ font-family: Arial, sans-serif;
+  background-image: url('settingsnew.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 100px auto;
+}
+
+.button {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  background-color: #519E8A;
+  color: #293132;
+  font-size: 20px;
+  line-height: 100px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #519E8A;
+}
+
+.levelbutton {
+  display: inline-block;
+  width: 110px;
+  height: 80px;
+  margin: 10px;
+  background-color: #519E8A;
+  color: #293132;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.grid-container {
+  display: grid;
+  grid-template: 150px / auto auto auto auto auto;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}

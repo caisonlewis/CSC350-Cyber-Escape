@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4F5165;
+            text-align: center;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+        }
+
+        input[type='text'],
+        input[type="password"],
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #519E8A;
+            color: #293132;
+            font-size: 20px;
+            line-height: 100px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #519E8A;
+            }
+
+        a.button {
+            display: inline-block;
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            background-color: #519E8A;
+            color: #293132;
+            font-size: 20px;
+            line-height: 100px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="app-login">
+            <form id="login-form">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <button type="button" id="login-button">Login</button>
+            </form>
+        </div>
+        <div><a href="../index.html" class="button">Return to Home</a></div>
+    </div>
+
+    <script type="module" src="../js/load_login.js"></script>
+</body>
+</html>

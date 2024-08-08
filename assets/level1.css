@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('settings1.jpeg'); /* Set background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Arranging buttons in 2 columns */
+    gap: 10px;
+    justify-items: center;
+}
+
+.levelbutton {
+    padding: 10px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.levelbutton:hover {
+    background-color: #45a049;
+}
+
+.return-home {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.return-home a {
+    color: #4CAF50; /* Green color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.return-home a:hover {
+    color: #45a049;
+}
+
+/* Add CSS styles for positioning and styling the image and response message */
+.image-page {
+    position: relative;
+}
+
+/* Set the image to occupy the entire width of its container */
+.image-page img {
+    width: 100%;
+    height: auto;
+    display: block; /* Ensures the image behaves as a block element */
+}
+
+.image-page p {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+}
+

@@ -1,0 +1,15 @@
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1em;
+}
+
+/* Additional styling for the button */
+button:hover {
+    color: #007bff; /* color yellow*/
+}
+
+ul li {
+    list-style: none;
+}

@@ -1,0 +1,295 @@
+---
+openapi: 3.0.0
+info:
+  title: Cyber Escape
+  description: |
+    This is a the api documentation for the Cyber Escape website. For any questions, please contact smm6987@uncw.edu.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.1-oas3
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: https://virtserver.swaggerhub.com/SHANEME99/thing/1.1
+  description: SwaggerHub API Auto Mocking
+paths:
+  /user/addUser:
+    post:
+      tags:
+      - user
+      summary: Add a new account to the site
+      operationId: addUser
+      responses:
+        "200":
+          description: "Valid input, successful operation"
+        "500":
+          description: Timeout
+      security:
+      - petstore_auth:
+        - write:users
+        - read:users
+  /user/getUserbyUsername:
+    get:
+      tags:
+      - user
+      summary: Finds all user info through username
+      description: Utilizes username
+      operationId: getUserbyUsername
+      parameters:
+      - name: username
+        in: query
+        description: username of account to look up
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error retrieving information
+  /user/getPointsbyUsername:
+    get:
+      tags:
+      - user
+      summary: Get's the user's current total points
+      description: Performs get on point total only.
+      operationId: getPointsByUsername
+      parameters:
+      - name: username
+        in: query
+        description: user to update points
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error getting points
+  /user/getHintsbyUsername:
+    get:
+      tags:
+      - user
+      summary: Get's the user's current total hints
+      description: Performs get on hint total only.
+      operationId: getHintsByUsername
+      parameters:
+      - name: username
+        in: query
+        description: user to get Hints
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error getting hints
+  /user/getLvlbyUsername:
+    get:
+      tags:
+      - user
+      summary: Get's the user's current highest level
+      description: Performs get on level only.
+      operationId: getLvlByUsername
+      parameters:
+      - name: username
+        in: query
+        description: user to get highest level
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error getting hints
+  /user/setPointsByUsername:
+    post:
+      tags:
+      - user
+      summary: Updates the user's current points.
+      description: "Requires username, pushes new point total."
+      operationId: setPointsByUsername
+      parameters:
+      - name: points
+        in: query
+        description: new point total
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: username
+        in: query
+        description: user to get campaign information
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error updating points
+  /user/getQuestionText:
+    get:
+      tags:
+      - Question
+      summary: Gets the data needed for the question of the current level.
+      description: Only gets the text of the question.
+      operationId: getQuestionText
+      parameters:
+      - name: questionId
+        in: query
+        description: Number of question to get text from
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error updating points
+  /user/getQuestionType:
+    get:
+      tags:
+      - Question
+      summary: Gets the data needed for the question type of the current level.
+      description: Only gets the type of the question.
+      operationId: getQuestionType
+      parameters:
+      - name: questionId
+        in: query
+        description: Number of question to get type from
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error updating points
+  /user/getQuestionData:
+    get:
+      tags:
+      - user
+      summary: Gets the question information from the database
+      description: Pulls everything relating to the current question.
+      operationId: getQuestionData
+      parameters:
+      - name: questionID
+        in: query
+        description: question number to pull from
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+        "500":
+          description: Error updating points
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        points:
+          type: integer
+          format: int32
+        hints:
+          type: integer
+          format: int32
+        highestlvl:
+          type: integer
+          format: int32
+      xml:
+        name: User
+    Question:
+      type: object
+      properties:
+        question_id:
+          type: integer
+          format: int32
+        question_text:
+          type: string
+        question_type:
+          type: string
+      xml:
+        name: Tag
+    MultipleChoiceAnswers:
+      type: object
+      properties:
+        question_id:
+          type: integer
+          format: int32
+        answer_text:
+          type: string
+    TrueFalseAnswers:
+      type: object
+      properties:
+        answer_id:
+          type: integer
+          format: int32
+        question_id:
+          type: integer
+          format: int32
+        answer:
+          type: string
+        answer_boolean:
+          type: integer
+          format: int32
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  requestBodies:
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+      required: true
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://petstore.swagger.io/oauth/dialog
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header

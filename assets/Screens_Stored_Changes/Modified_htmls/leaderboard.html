@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Escape Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-image: url('prize.jpeg');
+            background-size: cover;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .circle-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Make the element a circle */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 2px solid #000; /* Add border to the table */
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center; /* Align data in the middle of each column */
+            border-bottom: 1px solid #ddd;
+        }
+
+        th:first-child, td:first-child {
+            width: 20%;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 45%; /* Adjust width of the Username column */
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 35%; /* Adjust width of the Points column */
+        }
+
+        td {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Alternate row background color */
+        }
+    </style>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+
+    <div class="circle-container">
+        <div class="circle">Rank 1<br>User1234<br>1000</div>
+    </div>
+
+    <div class="circle-container">
+        <div class="circle">Rank 2<br>User5678<br>100</div>
+        <div class="circle">Rank 3<br>User9123<br>10</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Points</th>
+        </tr>
+        <tr>
+            <td>4.</td>
+            <td>User3456</td>
+            <td>1</td>
+        </tr>
+        <!-- Add other rows here -->
+    </table>
+</body>
+</html>

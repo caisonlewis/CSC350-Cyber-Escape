@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./assets/main_screen.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Main home page for Cyber escape, written by Shane Menzigian. This is the main home page, which should be linked
+    from the login screen. -->
+    <title>Home Page</title>
+    <style>
+        .username {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <!--Main body of website-->
+        <h1>Cyber Escape</h1>
+        <h2 id="wow"></h2>
+        <div>
+            <a href="./html/daily_challenge.html" class="button">Daily Challenge</a>
+            <a href="./html/campaign.html" class="button">Campaign</a>
+            <a href="./html/leaderboard.html" class="button">Leaderboards</a>
+            <a href="./html/settings.html" class="button">Settings</a>
+            <a href="./html/FAQ1.html" class="button">FAQ</a>
+            <a href="./html/SignUp.html" class="button" id="signupButton">SignUp</a>
+            <a href="./html/Login.html" class="button" id="loginButton">Login</a>
+        </div>
+    </div>
+
+    <!-- Display username at the top right -->
+    <div class="username" id="username"></div>
+
+    <script>
+        // Retrieve username from local storage
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('username').innerText = `Logged in as: ${username}`;
+
+            // Hide login and signup buttons if a user is logged in
+            const loginButton = document.getElementById('loginButton');
+            const signupButton = document.getElementById('signupButton');
+            if (loginButton) {
+                loginButton.style.display = 'none';
+            }
+            if (signupButton) {
+                signupButton.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
